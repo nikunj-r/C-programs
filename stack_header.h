@@ -1,7 +1,7 @@
 typedef struct node
 {
     void *dataptr;
-    struct node *link;                //link is a pointer to a node like struct node
+    struct node *link;              
 }STACK_NODE;
 
 typedef struct
@@ -15,11 +15,11 @@ STACK *createstack(void)
 {
      STACK *stack;
 
-     stack = (STACK *)malloc(sizeof(STACK));               //Allocates memory
+     stack = (STACK *)malloc(sizeof(STACK));         
      if(stack)
      {
-         stack->count = 0;           //stack points to STACK
-         stack->top = NULL;          //top is a pointer so initialized to NULL
+         stack->count = 0;    
+         stack->top = NULL;          
      }
      return stack;
 }
@@ -27,7 +27,7 @@ STACK *createstack(void)
 //Push stack
 bool pushStack(STACK *stack,void *dataInptr)
 {
-     STACK_NODE *newptr;            //newptr points to stack_node
+     STACK_NODE 
 
      newptr = (STACK_NODE *)malloc(sizeof(STACK_NODE));
      if(!newptr)
@@ -35,7 +35,7 @@ bool pushStack(STACK *stack,void *dataInptr)
 
      newptr->dataptr = dataInptr;
 
-     newptr->link = stack->top;     //newptr is a pointer to stack_node and stack is a pointer to STACK
+     newptr->link = stack->top;     
      stack->top = newptr;
 
      (stack->count)++;
@@ -46,7 +46,7 @@ bool pushStack(STACK *stack,void *dataInptr)
 void *popStack(STACK *stack)
 {
     void *dataOutptr;
-    STACK_NODE *temp;           //temp points to stack_node
+    STACK_NODE *temp;         
 
     if(stack->count == 0)
     dataOutptr = NULL;
@@ -55,11 +55,11 @@ void *popStack(STACK *stack)
         temp = stack->top;
         dataOutptr = stack->top->dataptr;
         stack->top = stack->top->link;
-        //free(temp);
-        (stack->count)--;      //like top--
+        free(temp);
+        (stack->count)--;   
     }
 
-    return dataOutptr;         //returns popvalue;
+    return dataOutptr;   
 }
 
 //Peep stack
@@ -68,7 +68,7 @@ void *stacktop(STACK *stack)
       if(stack->count == 0)
       return NULL;
       else
-      return stack->top->dataptr;     //returns top value without deleting
+      return stack->top->dataptr;     
 }
 
 //Stack underflow or empty
@@ -80,7 +80,7 @@ bool emptyStack(STACK *stack)
 //Stack overflow or full
 bool fullstack(STACK *stack)
 {
-      STACK_NODE *temp;       //temp points to stack_node
+      STACK_NODE *temp;  
 
       if(temp = (STACK_NODE *)malloc(sizeof(*(stack->top))))
       {
